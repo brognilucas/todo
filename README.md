@@ -49,7 +49,7 @@ The backend would still require to have extended coverage, including `Integratio
 #### Running
 - Start the database with `docker-compose up` inside of the todo-backend folder
 - Start the backend with `./gradlew run` nside of the todo-backend folder
-- Start the frontend with `npm start`
+- Install the dependencies with `npm install or yarn` and Start the frontend with `npm | yarn start`
 
 #### Testing 
 - Frontend tests can be run with `yarn test`
