@@ -46,6 +46,7 @@ The backend would still require to have extended coverage, including `Integratio
 - Java 21
 - NodeJS 
  
+#### Running
 - Start the database with `docker-compose up` inside of the todo-backend folder
 - Start the backend with `./gradlew run` nside of the todo-backend folder
 - Start the frontend with `npm start`
