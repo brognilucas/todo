@@ -1,0 +1,24 @@
+<h2 class="ui header">Add a new todo</h2>
+
+<form class="ui form" (ngSubmit)="submitTodoForm()">
+  <div class="field">
+    <label>Title</label>
+    <input type="text" [(ngModel)]="todo.title" name="title" required>
+  </div>
+  
+  <div class="field">
+    <label>Description</label>
+    <textarea [(ngModel)]="todo.description" name="description"></textarea>
+  </div>
+  
+  <div class="field">
+    <label>Category</label>
+    <select [(ngModel)]="todo.category" name="category" required class="ui dropdown">
+      <option value="">Select Category</option>
+      <option value="Work">Work</option>
+      <option value="Personal">Personal</option>
+    </select>
+  </div>
+  
+  <button [disabled]="!todo.title || !todo.category" class="ui button primary" type="submit">Add Todo</button>
+</form>

@@ -1,0 +1,43 @@
+<h2 class="ui header">List of Todo's </h2>
+
+<div class="ui segment">
+  <div class="ui form">
+    <div class="field">
+      <label>Filter by Category:</label>
+      <select class="ui dropdown" [(ngModel)]="selectedCategory" (change)="applyFilters(selectedCategory, showCompleted)">
+        <option value="">All</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+    <div class="field">
+      <div class="ui checkbox">
+        <input type="checkbox" (change)="applyFilters(selectedCategory, showCompleted)" [(ngModel)]="showCompleted" name="showCompleted">
+        <label>Show completed todos</label>
+      </div>
+    </div>
+  </div>
+  
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todos" [class.completed]="todo.completed">
+        <td>{{ todo.title }}</td>
+        <td>{{ todo.description }}</td>
+        <td>{{ todo.category }}</td>
+        <td>{{ todo.completed ? 'Completed' : 'Pending' }}</td>
+        <td>
+          <button class="ui button red" (click)="markAsCompleted(todo.id)" [disabled]="todo.completed">Mark as Completed</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
