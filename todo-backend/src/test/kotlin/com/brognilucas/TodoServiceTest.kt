@@ -77,12 +77,10 @@ class TodoServiceTest {
 
     @Test
     fun `should filter todos by category`() {
-        // Insert sample data
         todoService.createTodo(Todo(title = "title1", description = "description1", category = "work"));
         todoService.createTodo(Todo(title = "title2", description = "description2", category = "work"));
         todoService.createTodo(Todo(title = "title3", description = "description3", category = "personal"));
 
-        // Fetch todos by category
         val workTodos = todoService.getTodos(TodoFilters(category = "work"))
         assertEquals(2, workTodos.size)
         assertEquals("work", workTodos[0].category)
