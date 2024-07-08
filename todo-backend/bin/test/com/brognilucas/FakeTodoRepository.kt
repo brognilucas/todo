@@ -5,15 +5,15 @@ class FakeTodoRepository : TodoRepository {
     override fun findAll(todoFilters: TodoFilters?): List<Todo> {
         var todoList = todos;
         if (todoFilters?.category != null) {
-            todoList = todos.filter { it -> it.category == todoFilters.category }.toMutableList()
+            todoList = todoList.filter { it -> it.category == todoFilters.category }.toMutableList()
         }
 
         if (todoFilters?.title != null) {
-            todoList = todos.filter { it -> it.title.contains(todoFilters.title!!) }.toMutableList()
+            todoList = todoList.filter { it -> it.title.contains(todoFilters.title!!) }.toMutableList()
         }
 
         if (todoFilters?.showCompleted == false) {
-            todoList = todos.filter { it -> !it.completed  }.toMutableList()
+            todoList = todoList.filter { it -> !it.completed  }.toMutableList()
         }
 
         return todoList
