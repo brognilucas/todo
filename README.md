@@ -30,15 +30,6 @@ Both Frontend and Backend are covered by tests. Both uses `Fake Pattern` for ext
 
 The backend would still require to have extended coverage, including `Integration Tests` as the next step. 
 
-
-### Next steps
-- Adding Open API documentation
-- Migrating JDBC from repository to a ORM
-- Implement helper classes for the integration tests 
-- Create dedicated docker setup for Integration tests 
-- Dockerize application
-
-
 ### Running 
 
 #### Pre requisites
@@ -54,3 +45,13 @@ The backend would still require to have extended coverage, including `Integratio
 #### Testing 
 - Frontend tests can be run with `yarn test`
 - Backend tests can be run with `./gradlew build`
+
+
+### Next steps
+- Adding Open API documentation
+- Migrating JDBC from repository to a ORM
+- Implement helper classes for the integration tests 
+- Create dedicated docker setup for Integration tests 
+- Dockerize application
+- Improve monitoring 
+- Add further validations
