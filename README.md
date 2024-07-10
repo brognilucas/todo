@@ -51,7 +51,6 @@ The backend would still require to have extended coverage, including `Integratio
 - Adding Open API documentation
 - Migrating JDBC from repository to a ORM
 - Implement helper classes for the integration tests 
-- Create dedicated docker setup for Integration tests 
-- Dockerize application
 - Improve monitoring 
 - Add further validations
+- Add flyway for migrate database 
