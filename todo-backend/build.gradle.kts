@@ -51,6 +51,7 @@ java {
 graalvmNative.toolchainDetection = false
 micronaut {
     runtime("netty")
+    version("4.5.0")
     testRuntime("junit5")
     processing {
         incremental(true)
@@ -70,6 +71,17 @@ micronaut {
     }
 }
 
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "com.brognilucas.ApplicationKt"
+    }
+}
+tasks.named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJar") {
+    mergeServiceFiles()
+    manifest {
+        attributes["Main-Class"] = "com.brognilucas.ApplicationKt"
+    }
+}
 
 tasks.named<io.micronaut.gradle.docker.NativeImageDockerfile>("dockerfileNative") {
     jdkVersion = "21"
