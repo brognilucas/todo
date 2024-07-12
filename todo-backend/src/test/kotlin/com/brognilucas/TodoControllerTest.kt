@@ -10,13 +10,15 @@ import io.micronaut.http.client.annotation.Client
 import io.micronaut.runtime.server.EmbeddedServer
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import jakarta.inject.Inject
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.sql.Connection
 import java.sql.DriverManager
 
-@MicronautTest
+@MicronautTest(
+    environments = ["test"],
+)
 class TodoControllerTest(private val embeddedServer: EmbeddedServer) {
 
     @Inject
@@ -43,7 +45,7 @@ class TodoControllerTest(private val embeddedServer: EmbeddedServer) {
         return response;
     }
 
-    @BeforeEach
+    @AfterEach
     fun setup() {
         getConnection().use { conn ->
             val stmt = conn.createStatement()
