@@ -1,29 +1,30 @@
 package com.brognilucas
 
 import jakarta.inject.Singleton
+import kotlinx.coroutines.runBlocking
 
 @Singleton
 class TodoService(private val todoRepository: TodoRepository) {
 
-    fun getTodos(filters: TodoFilters): List<Todo> {
+    suspend  fun getTodos(filters: TodoFilters): List<Todo> = runBlocking {
         val todos = todoRepository.findAll(filters)
-        return todos;
+        return@runBlocking todos;
     }
 
-    fun getTodoById(id: Long): Todo {
+    suspend fun getTodoById(id: Long): Todo = runBlocking {
         val todo = todoRepository.findById(id)
         if (todo == null) {
             throw Exception("Todo not found");
         }
-        return todo;
+        return@runBlocking todo;
     }
 
-    fun createTodo(todo: Todo): Todo {
+    suspend fun createTodo(todo: Todo): Todo {
         val todo = todoRepository.save(todo)
         return todo;
     }
 
-    fun markAsDone(todoId: Long): Todo {
+    suspend fun markAsDone(todoId: Long): Todo {
         val todo = getTodoById(todoId);
         todo.markAsCompleted();
 

@@ -2,7 +2,7 @@ package com.brognilucas
 class FakeTodoRepository : TodoRepository {
     private val todos = mutableListOf<Todo>()
 
-    override fun findAll(todoFilters: TodoFilters?): List<Todo> {
+    override suspend fun findAll(todoFilters: TodoFilters?): List<Todo> {
         var todoList = todos;
         if (todoFilters?.category != null) {
             todoList = todoList.filter { it -> it.category == todoFilters.category }.toMutableList()
@@ -19,17 +19,17 @@ class FakeTodoRepository : TodoRepository {
         return todoList
     }
 
-    override fun findById(id: Long): Todo? {
+    override suspend fun findById(id: Long): Todo? {
         return todos.find { it.id == id }
     }
 
-    override fun save(todo: Todo): Todo {
+    override suspend fun save(todo: Todo): Todo {
         val todoCopy = Todo (id = (todos.size + 1).toLong(), title = todo.title, description = todo.description, category = todo.category, completed = false)
         todos.add(todoCopy)
         return todoCopy
     }
 
-    override fun update(todo: Todo): Todo {
+    override suspend fun update(todo: Todo): Todo {
         val index = todos.indexOfFirst { it.id == todo.id }
         if (index != -1) {
             todos[index] = todo
